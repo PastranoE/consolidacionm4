@@ -14,7 +14,6 @@ function presupuesto() {
         alert("ingrese el presupuesto")
     }
 }
-
 function gastos() {
     if (presupuestoIni == 0) {
         alert("Ingrese el Presupuesto")
@@ -32,7 +31,6 @@ function gastos() {
     }
     gastoInicial.push(tempo)
     gastoInicial.forEach(function (elemento) {
-
         table += `<tr>
             <td>${elemento.item}</td>
             <td>${Number(elemento.monto).toLocaleString("es-CL")}</td>
@@ -49,10 +47,7 @@ function gastos() {
     document.getElementById("nombreDelGasto").value = "";
     document.getElementById("valorDelGasto").value = "";
 }
-
 function eliminarItem(id) {
-
-
     let item= gastoInicial.findIndex((elemento)=>{
         return elemento.id==id
     })
@@ -68,20 +63,16 @@ function recalculando(){
     }else{
 
         gastoInicial.forEach(function (elemento) {
-    
             table += `<tr>
                 <td>${elemento.item}</td>
                 <td>${Number(elemento.monto).toLocaleString("es-CL")}</td>
                 <td><i onclick="eliminarItem(${elemento.id})" class="fa-solid fa-trash-can fa-xs" style="color: #465cc8;"></i></td>
             </tr>`;
             gastoTotal += parseInt(elemento.monto);
-    
             document.getElementById("tablaGasto").innerHTML = table;
-    
         })
     }
     saldoActual = parseInt(presupuestoIni) - gastoTotal;
     document.getElementById("gas").innerHTML = Number(gastoTotal).toLocaleString("es-CL");
     document.getElementById("sal").innerHTML = Number(saldoActual).toLocaleString("es-CL");
-
 }
